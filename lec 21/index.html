@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app='ControllerAsApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>7 classes</title>
+  </head>
+  <body>
+    <h1>7 classes</h1>
+
+    <!-- LIST #1 - unlimited items -->
+    <div id="list1" ng-controller='ShoppingListController1 as list1'>
+      <h3>Courses offered in 7 classes</h3>
+      <input type="text" ng-model="list1.itemName" placeholder="Course name">
+      <input type="text" ng-model="list1.itemQuantity" placeholder="class">
+      <button ng-click="list1.addItem();">Add course</button>
+      <ol>
+        <li ng-repeat="item in list1.items">
+          {{ item.name }} of {{ item.quantity }}
+          <button ng-click="list1.removeItem($index);">Remove course</button>
+        </li>
+      </ol>
+      <!-- <div class="error">Error: {{list1.errorMessage}}</div>
+    </div> -->
+
+    <!-- LIST #2 (limited to 3 items) -->
+    <div id="list2" ng-controller='ShoppingListController2 as list2'>
+      <h3>Special Courses offered in 7 classes (limited to 3 courses)</h3>
+      <input type="text" ng-model="list2.itemName" placeholder="Course name">
+      <input type="text" ng-model="list2.itemQuantity" placeholder="class">
+      <button ng-click="list2.addItem();">Add course</button>
+      <ol>
+        <li ng-repeat="item in list2.items">
+          {{ item.name }} of {{ item.quantity }}
+          <button ng-click="list2.removeItem($index);">Remove course</button>
+        </li>
+      </ol>
+      <div class="error">Error: {{list2.errorMessage}}</div>
+    </div>
+
+  </body>
+</html>
